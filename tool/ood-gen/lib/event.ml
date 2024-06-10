@@ -143,7 +143,7 @@ let all () =
 
          module EventsFeed = struct
           let create_entry (log : t) =
-            let authors = (Syndic.Atom.author "Ocaml.org", []) in  
+            let authors = (Syndic.Atom.author "Ocaml.org", []) in
             let event_type = EventType.show log.event_type in
             let textual_location = log.textual_location in
              let start_date =
@@ -161,7 +161,6 @@ let all () =
                      long
                | None -> textual_location
              in
-            
              Syndic.Atom.entry ~id ~authors
                ~title:(Syndic.Atom.Text (log.title ^ " " ^ start_date_str))
                ~updated:start_date
@@ -172,15 +171,10 @@ let all () =
       
             let create_feed () =
               let open Rss in
-              () |> all 
+              () |> all
               |> create_feed ~id:"events.xml" ~title:"OCaml Events" ~create_entry
               |> feed_to_string
               end
-        
-        
-        
-        
-        
 
 let template () =
   Format.asprintf
